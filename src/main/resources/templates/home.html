@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span>Bienvenu dans l'application </span>
+    <span th:text="${user.fistName}"></span>
+    <span th:text="${user.lastName}"></span>
+
+    <h1 th:text="${user1} ?: 'l\'etudiant n\'existe pas'"></h1>
+    <h1 th:text="${user1== null} ? 'l\'etudiant n\'existe pas':'l\'etudiant existe'"></h1>
+
+    <h1 th:if="${user1 == null}">
+        Au revoir
+    </h1>
+
+    <a th:href="@{/login}">Lien connexion</a>
+    <a th:href="@{/students}">Lien etudiant</a>
+</body>
+</html>
