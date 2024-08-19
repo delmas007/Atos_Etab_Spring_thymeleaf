@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter-Professeur</title>
+    <link rel="stylesheet" href="../css/professeur/ajouter.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <img src="../icon/etablissement.png"  style="width: 50px;height: 50px;margin-right: 10px" alt="Mon Etab Logo">
+        <h2>Mon Etab</h2>
+    </div>
+    <ul class="menu">
+        <hr>
+        <li ><a href="../Home.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
+            <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+        </svg> Tableau de bord</a></li>
+        <li ><a href="../Eleve/lister_eleve.html"><img src="../icon/eleve.png" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
+        <li class="active"><a href="../Professeur/lister_professeur.html"><img src="../icon/professeur.png" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
+        <li><a href="../Utilisateur/lister_utilisateur.html"><img src="../icon/user.png" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
+        <li><a href="../Rapport/rapport.html"><img src="../icon/rapport.png" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
+    </ul>
+    <div class="logout">
+        <hr>
+        <img src="../icon/logout.png" style="width: 30px;height: 30px" alt=""> Déconnexion
+    </div>
+</div>
+
+<div class="main-content">
+    <main>
+        <div class="retour-container">
+            <a href="#" class="retour">← Retour</a>
+        </div>
+        <h2>Ajouter un Professeur</h2>
+        <form id="addStudentForm">
+            <div class="form-row">
+                <input type="text" id="nom" placeholder="Nom" required>
+                <input type="text" id="prenom" placeholder="Prénom" required>
+            </div>
+            <div class="form-row">
+                <div>
+                    <label >Vacant :</label>
+                </div>
+                <div class="radio-group">
+                    <label><input type="radio" name="vacant" value="oui"  required> oui</label>
+                    <label><input type="radio" name="vacant" value="non" required> non</label>
+                </div>
+            </div>
+            <div class="form-row">
+                    <select id="classe" required>
+                        <option value="">Sélectionner une matiere</option>
+                        <option value="Math">Math</option>
+                        <option value="Physique">Physique</option>
+                        <option value="EPS">EPS</option>
+                        <option value="Anglais">Anglais</option>
+                        <option value="SVT">SVT</option>
+                        <option value="Philosophie">Philosophie</option>
+                        <option value="Français">Français</option>
+                    </select>
+                <input type="date" id="dateNaissance" required>
+            </div>
+
+            <div class="form-row">
+                <input type="tel" id="telephone" placeholder="Téléphone">
+                <input type="text" id="ville" placeholder="Ville">
+            </div>
+            <div class="form-row buttons">
+                <button type="button" class="btn-cancel">Annuler</button>
+                <button type="submit" class="btn-save">Enregistrer</button>
+            </div>
+        </form>
+    </main>
+</div>
+
+<script src="../js/Home.js"></script>
+</body>
+</html>

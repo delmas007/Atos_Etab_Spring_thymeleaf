@@ -18,6 +18,6 @@ public class IndexController {
         //test Elvis operator
         User user1 = null;
         model.addAttribute("user1",user1);
-        return "home";
+        return "home1";
     }
 }
