@@ -22,10 +22,10 @@
         <li ><a href="../Home.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
             <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
         </svg> Tableau de bord</a></li>
-        <li class="active"><a href="lister_eleve.html"><img src="../icon/eleve.png" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
-        <li><a href="../Professeur/lister_professeur.html"><img src="../icon/professeur.png" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
-        <li><a href="../Utilisateur/lister_utilisateur.html"><img src="../icon/user.png" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
-        <li><a href="../Rapport/rapport.html"><img src="../icon/rapport.png" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
+        <li class="active"><a  th:href="@{/eleve/lister}"><img th:src="@{../icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
+        <li><a th:href="@{/professeur/lister}"><img th:src="@{../icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
+        <li><a  th:href="@{/utilisateur/lister}"><img th:src="@{../icon/user.png}" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
+        <li><a  th:href="@{/rapport}"><img th:src="@{../icon/rapport.png}" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
     </ul>
     <div class="logout">
         <hr>

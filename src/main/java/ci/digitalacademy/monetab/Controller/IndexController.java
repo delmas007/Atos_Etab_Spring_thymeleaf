@@ -10,14 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class IndexController {
 
-    @GetMapping
-    public String index(Model model) {
-        User user = new User(1,"Angaman","delmas");
-        model.addAttribute("user",user);
+//    @GetMapping
+//    public String index(Model model) {
+//        User user = new User(1,"Angaman","delmas");
+//        model.addAttribute("user",user);
+//
+//        //test Elvis operator
+//        User user1 = null;
+//        model.addAttribute("user1",user1);
+//        return "home1";
+//    }
 
-        //test Elvis operator
-        User user1 = null;
-        model.addAttribute("user1",user1);
-        return "home1";
+    @GetMapping
+    public String connexion(){
+        return "Connexion";
+    }
+
+    @GetMapping("/home")
+    public String home(){
+        return "Home";
     }
 }

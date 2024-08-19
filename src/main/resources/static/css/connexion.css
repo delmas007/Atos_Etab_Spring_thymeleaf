@@ -77,3 +77,20 @@ form button:hover {
     margin: 0; /* Supprime le margin par défaut du h2 pour un meilleur alignement */
 }
 
+.button {
+    width: 1000px;
+    padding: 10px;
+    background-color: #555555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px black;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
