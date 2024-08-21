@@ -2,38 +2,12 @@
 <html lang="fr"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter-Utilisateur</title>
-    <link rel="stylesheet" href="../css/professeur/ajouter.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+<title>User</title>
+<link rel="stylesheet" href="../css/utilisateur/ajouter.css">
+<head th:insert="~{fragments/fragment :: head}">
 </head>
 <body>
-<div class="sidebar">
-    <div class="logo">
-        <img src="../icon/etablissement.png"  style="width: 50px;height: 50px;margin-right: 10px" alt="Mon Etab Logo">
-        <h2>Mon Etab</h2>
-    </div>
-    <ul class="menu">
-        <hr>
-        <li> <a th:href="@{/home}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
-            <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
-        </svg> Tableau de bord</a></li>
-        <li><a  th:href="@{/eleve}"><img th:src="@{../icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
-        <li ><a th:href="@{/professeur}"><img th:src="@{../icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
-        <li class="active"><a  th:href="@{/utilisateur}"><img th:src="@{../icon/user.png}" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
-        <li><a  th:href="@{/rapport}"><img th:src="@{../icon/rapport.png}" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
-    </ul>
-    <div class="logout">
-        <hr>
-        <a th:href="@{/}"><img th:src="@{../icon/logout.png}" style="width: 30px;height: 30px" alt=""> Déconnexion</a>
-    </div>
-</div>
+<div  th:insert="~{fragments/fragment :: sidebar}"></div>
 
 <div class="main-content">
     <main>
@@ -59,6 +33,6 @@
     </main>
 </div>
 
-<script src="../js/Home.js"></script>
+<th:block th:insert="~{fragments/fragment :: script-modal}"></th:block>
 </body>
 </html>

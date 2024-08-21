@@ -7,27 +7,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("users")
-public class UsersController {
+@RequestMapping("students")
+public class StudentsController {
 
     @GetMapping("/add")
-    public String addUser(HttpServletRequest request, Model model){
+    public String addStudent(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
-        return "user/forms";
+        return "students/forms";
     }
 
     @GetMapping("/update")
-    public String updateUser(HttpServletRequest request, Model model){
+    public String updateStudent(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
-        return "user/forms";
+        return "students/forms";
     }
 
     @GetMapping
-    public String listUser(HttpServletRequest request, Model model){
+    public String listStudent(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
-        return "user/list";
+        return "students/list";
     }
 }

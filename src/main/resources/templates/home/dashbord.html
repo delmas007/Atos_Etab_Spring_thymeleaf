@@ -4,10 +4,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <title>Tableau de Bord - Mon Etab</title>
 <link rel="stylesheet" href="css/home.css">
-<head th:insert="fragments/fragment :: head">
+<head th:insert="~{fragments/fragment :: head}">
 </head>
 <body>
-<div  th:insert="fragments/fragment :: sidebar"></div>
+<div  th:insert="~{fragments/fragment :: sidebar}"></div>
 
 <div class="main-content">
     <h1>Tableau de bord</h1>
@@ -34,6 +34,6 @@
     </div>
 </div>
 
-<th:block th:insert="fragments/fragment :: script"></th:block>
+<th:block th:insert="~{fragments/fragment :: script}"></th:block>
 </body>
 </html>

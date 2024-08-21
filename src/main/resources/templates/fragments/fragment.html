@@ -15,15 +15,20 @@
     </div>
     <ul class="menu">
         <hr>
-        <li  class="active"> <a th:href="@{/dashbord}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
+        <li th:classappend="${currentUrl == '/dashbord'} ? 'active'">
+            <a th:href="@{/dashbord}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
             <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
         </svg> Tableau de bord</a></li>
-        <li><a  th:href="@{students}"><img th:src="@{icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
-        <li><a th:href="@{professors}"><img th:src="@{icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
-        <li><a  th:href="@{users}"><img th:src="@{icon/user.png}" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
-        <li><a  th:href="@{reports}"><img th:src="@{icon/rapport.png}" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
+        <li th:classappend="${currentUrl == '/students' || currentUrl == '/students/add' || currentUrl == '/students/update'} ? 'active'">
+            <a  th:href="@{students}"><img th:src="@{../icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
+        <li th:classappend="${currentUrl == '/professors' || currentUrl == '/professors/add' || currentUrl == '/professors/update'} ? 'active'">
+            <a th:href="@{professors}"><img th:src="@{../icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
+        <li th:classappend="${currentUrl == '/users' || currentUrl == '/users/add' || currentUrl == '/users/update'} ? 'active'">
+            <a  th:href="@{users}"><img th:src="@{../icon/user.png}" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
+        <li th:classappend="${currentUrl == '/reports'} ? 'active'">
+            <a  th:href="@{reports}"><img th:src="@{../icon/rapport.png}" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
     </ul>
-    <div class="logout" style="padding-top: 100%">
+    <div class="logout" style="padding-top: ">
         <hr>
         <a th:href="@{/static}"><img th:src="@{../icon/logout.png}" style="width: 30px;height: 30px" alt=""> Déconnexion</a>
     </div>
@@ -31,4 +36,7 @@
 
 <th:block th:fragment="script">
     <script src="js/Home.js"></script>
+</th:block>
+<th:block th:fragment="script-modal">
+    <script src="js/Modal.js"></script>
 </th:block>
