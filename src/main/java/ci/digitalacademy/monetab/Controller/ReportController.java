@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("rapport")
-public class RapportController {
+@RequestMapping("reports")
+public class ReportController {
 
     @RequestMapping()
-    public String genererRapport(){
-        return "Rapport/rapport";
+    public String report(){
+        return "report/default";
     }
 }

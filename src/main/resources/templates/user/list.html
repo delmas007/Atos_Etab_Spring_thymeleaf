@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lister-eleve</title>
-    <link rel="stylesheet" href="../css/eleve/lister.css">
+    <title>Lister-utilisateur</title>
+    <link rel="stylesheet" href="../css/professeur/lister.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +25,9 @@
         <li> <a th:href="@{/home}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
             <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
         </svg> Tableau de bord</a></li>
-        <li class="active"><a  th:href="@{/eleve/lister}"><img th:src="@{../icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
-        <li><a th:href="@{/professeur/lister}"><img th:src="@{../icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
-        <li><a  th:href="@{/utilisateur/lister}"><img th:src="@{../icon/user.png}" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
+        <li><a  th:href="@{/eleve}"><img th:src="@{../icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
+        <li ><a th:href="@{/professeur}"><img th:src="@{../icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
+        <li class="active"><a  th:href="@{/utilisateur}"><img th:src="@{../icon/user.png}" style="width: 30px;height: 30px" alt=""> Utilisateurs</a></li>
         <li><a  th:href="@{/rapport}"><img th:src="@{../icon/rapport.png}" style="width: 30px;height: 30px" alt=""> Rapport</a></li>
     </ul>
     <div class="logout">
@@ -39,48 +39,30 @@
 <div class="main-content">
     <main>
         <header class="header">
-            <h1>Élèves (2)</h1>
-            <a th:href="@{/eleve/ajouter}"> <img th:src="@{../icon/plus.png}" style="width: 10px;height: 10px" alt=""> Nouvel élève</a>
+            <h1>Professeur (2)</h1>
+            <a th:href="@{/utilisateur}"> <img th:src="@{../icon/plus.png}" style="width: 10px;height: 10px" alt=""> Nouveau profeseur</a>
         </header>
         <section class="table-section">
             <table>
                 <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Genre</th>
-                    <th>Classe</th>
-                    <th>Matricule</th>
-                    <th>Age</th>
-                    <th>Téléphone</th>
-                    <th>Ville</th>
+                    <th>Pseudo</th>
+                    <th>Date de creation</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>KOFFI</td>
-                    <td>George</td>
-                    <td>M</td>
-                    <td>Tle</td>
-                    <td>GDJ7GDGD</td>
-                    <td>25</td>
-                    <td>0123456789</td>
-                    <td>Bonoua</td>
+                    <td>admin</td>
+                    <td>16/03/2024</td>
                     <td>
                         <button class="edit-btn">Modifier</button>
                         <button class="delete-btn">Supprimer</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>KONÉ</td>
-                    <td>Sali</td>
-                    <td>F</td>
-                    <td>2nd</td>
-                    <td>GDJ7GDGD</td>
-                    <td>22</td>
-                    <td>0123456789</td>
-                    <td>Abidjan</td>
+                    <td>user2</td>
+                    <td>13/03/2024</td>
                     <td>
                         <button class="edit-btn">Modifier</button>
                         <button class="delete-btn">Supprimer</button>
@@ -100,7 +82,7 @@
             <h2>ATTENTION !!!</h2>
         </div>
         <div class="modal-body">
-            <p>Voulez-vous supprimer cet élève ?</p>
+            <p>Voulez-vous supprimer ce professeur ?</p>
         </div>
         <div class="modal-footer">
             <button id="confirmYes" class="modal-btn yes-btn">Oui</button>
