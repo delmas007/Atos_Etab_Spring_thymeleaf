@@ -29,14 +29,14 @@
     </ul>
     <div class="logout">
         <hr>
-        <img src="../icon/logout.png" style="width: 30px;height: 30px" alt=""> Déconnexion
+        <a th:href="@{/}"><img th:src="@{../icon/logout.png}" style="width: 30px;height: 30px" alt=""> Déconnexion</a>
     </div>
 </div>
 
 <div class="main-content">
     <main>
         <div class="retour-container">
-            <a href="#" class="retour">← Retour</a>
+            <a th:href="@{/eleve/lister}" class="retour">← Retour</a>
         </div>
 
         <h2>Ajouter un élève</h2>
