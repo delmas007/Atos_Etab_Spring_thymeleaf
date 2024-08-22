@@ -1,16 +1,16 @@
 package ci.digitalacademy.monetab.Service;
 
-import ci.digitalacademy.monetab.Model.Eleve;
+import ci.digitalacademy.monetab.Model.Student;
 
 import java.util.List;
 
 public interface IEleveService {
 
 
-    Eleve save(Eleve eleve);
-    Eleve update(Eleve eleve);
+    Student save(Student student);
+    Student update(Student student);
     void delete(int id);
-    List<Eleve> getAll();
-    Eleve getOne(int id);
+    List<Student> getAll();
+    Student getOne(int id);
 }
 

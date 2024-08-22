@@ -1,7 +1,7 @@
 package ci.digitalacademy.monetab.Service;
 
 
-import ci.digitalacademy.monetab.Model.Professeur;
+import ci.digitalacademy.monetab.Model.Professor;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import java.util.List;
 public interface IProfesseurService {
 
 
-    Professeur save(Professeur Professeur);
-    Professeur update(Professeur Professeur);
+    Professor save(Professor Professor);
+    Professor update(Professor Professor);
     void delete(int id);
-    List<Professeur> getAll();
-    Professeur getOne(int id);
+    List<Professor> getAll();
+    Professor getOne(int id);
 
 }
 
