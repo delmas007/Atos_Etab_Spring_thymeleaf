@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProfessorsController {
 
     @GetMapping("/add")
-    public String addProfessor(HttpServletRequest request, Model model){
+    public String showAddProfessorPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "professors/forms";
     }
 
     @GetMapping("/update")
-    public String updateProfessor(HttpServletRequest request, Model model){
+    public String showUpdateProfessorPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "professors/forms";
     }
 
     @GetMapping
-    public String listProfessors(HttpServletRequest request, Model model){
+    public String showProfessorPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "professors/list";

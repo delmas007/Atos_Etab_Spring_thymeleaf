@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UsersController {
 
     @GetMapping("/add")
-    public String addUser(HttpServletRequest request, Model model){
+    public String showAddUserPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "user/forms";
     }
 
     @GetMapping("/update")
-    public String updateUser(HttpServletRequest request, Model model){
+    public String showUpdateUserPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "user/forms";
     }
 
     @GetMapping
-    public String listUser(HttpServletRequest request, Model model){
+    public String showUserPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "user/list";

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReportController {
 
     @RequestMapping()
-    public String report(HttpServletRequest request, Model model){
+    public String showReportPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "report/default";
