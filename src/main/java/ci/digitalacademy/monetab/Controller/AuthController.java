@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthController {
 
     @GetMapping
-    public String connexion(Model model, HttpServletRequest request){
+    public String showLoginPage(Model model, HttpServletRequest request){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         return "auth/login";
