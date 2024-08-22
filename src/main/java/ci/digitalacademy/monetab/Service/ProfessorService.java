@@ -4,16 +4,16 @@ package ci.digitalacademy.monetab.Service;
 import ci.digitalacademy.monetab.Model.Professor;
 
 import java.util.List;
+import java.util.Optional;
 
 
-public interface IProfesseurService {
+public interface ProfessorService {
 
 
     Professor save(Professor Professor);
     Professor update(Professor Professor);
-    void delete(int id);
+    void delete(Long id);
     List<Professor> getAll();
-    Professor getOne(int id);
-
+    Optional<Professor> findOne(Long id);
 }
 

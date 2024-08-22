@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Student extends Personne {
+public class Student  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

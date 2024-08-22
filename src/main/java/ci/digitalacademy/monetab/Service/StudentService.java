@@ -3,14 +3,15 @@ package ci.digitalacademy.monetab.Service;
 import ci.digitalacademy.monetab.Model.Student;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface IEleveService {
+public interface StudentService {
 
 
     Student save(Student student);
     Student update(Student student);
-    void delete(int id);
+    void delete(Long id);
     List<Student> getAll();
-    Student getOne(int id);
+    Optional<Student> findOne(Long id);
 }
 

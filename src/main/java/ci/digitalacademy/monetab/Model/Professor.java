@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Professor extends Personne {
+public class Professor  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

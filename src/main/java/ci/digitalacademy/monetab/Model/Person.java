@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Personne {
+public class Person {
     private int id ;
     private Date dateNaissance ;
     private String ville ;
