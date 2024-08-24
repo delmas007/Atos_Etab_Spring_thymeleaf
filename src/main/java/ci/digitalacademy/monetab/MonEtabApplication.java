@@ -1,8 +1,12 @@
 package ci.digitalacademy.monetab;
 
+import ci.digitalacademy.monetab.Model.Address;
 import ci.digitalacademy.monetab.Model.User;
+import ci.digitalacademy.monetab.Repository.AddressRepository;
 import ci.digitalacademy.monetab.Repository.UserRepository;
+import ci.digitalacademy.monetab.Service.AddressService;
 import ci.digitalacademy.monetab.Service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,41 +17,25 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
-public class MonEtabApplication implements CommandLineRunner {
+@AllArgsConstructor
+public class MonEtabApplication {
 
-    @Autowired
+
     private UserRepository userRepository;
-
-    @Autowired
     private UserService userService;
+    private AddressService addressService;
 
     public static void main(String[] args) {
         SpringApplication.run(MonEtabApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        List<User> userList = List.of(
-                User.builder()
-                        .pseudo("admin")
-                        .password("admin")
-                        .creationDate(Instant.now())
-                        .build(),
-                User.builder()
-                        .pseudo("user")
-                        .password("user")
-                        .creationDate(Instant.now())
-                        .build()
-        );
-        userRepository.saveAll(userList);
-
-        List<User> users = userService.findAll();
-        System.out.println(users);
-
-        Optional<User> optionalUser = userService.findOne(2L);
-        System.out.println(optionalUser);
-        User userss = userList.get(1);
-        userss.setPseudo("blabla");
-        userService.save(userss);
-    }
+//    @Override
+//    public void run(String... args) throws Exception {
+//        Address address = new Address(null,"abidjan","cote d'ivoire","riviera",null);
+//       User utilisateur = new User(null,"admine","admine", Instant.now(),address);
+//        Address addressservice = addressService.save(address);
+//        User userservice = userService.save(utilisateur);
+//        System.out.println(userService.findAll());
+//
+//    }
 }

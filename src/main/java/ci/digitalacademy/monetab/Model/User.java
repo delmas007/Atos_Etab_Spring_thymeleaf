@@ -12,6 +12,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "utilisateur")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +26,8 @@ public class User {
 
     @Column(nullable = false,name = "creation_date")
     private Instant creationDate;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 }

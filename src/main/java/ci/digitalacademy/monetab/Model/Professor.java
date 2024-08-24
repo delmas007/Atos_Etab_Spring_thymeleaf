@@ -4,6 +4,8 @@ package ci.digitalacademy.monetab.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,4 +29,7 @@ public class Professor  {
 
     @Column(nullable = false,name = "sujetProchaine_reunion")
     private String sujetProchaineReunion;
+
+    @OneToMany
+    private Set<FicheNote> ficheNote;
 }

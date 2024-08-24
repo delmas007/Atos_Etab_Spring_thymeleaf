@@ -19,4 +19,6 @@ public class Student  {
     private String classe;
     @Column(nullable = false,name = "matricule",unique = true)
     private String matricule;
+
+
 }

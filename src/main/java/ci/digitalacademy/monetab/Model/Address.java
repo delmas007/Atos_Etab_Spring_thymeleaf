@@ -18,4 +18,7 @@ public class Address {
     private String street;
     private String city;
     private String country;
+
+    @OneToOne(mappedBy = "address")
+    private User user;
 }
