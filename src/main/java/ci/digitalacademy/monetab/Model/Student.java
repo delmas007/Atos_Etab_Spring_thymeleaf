@@ -7,17 +7,13 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+//@Builder
 @Entity
-public class Student  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Student extends Person  {
 
     @Column(nullable = false,name = "classe")
     private String classe;
-    @Column(nullable = false,name = "matricule",unique = true)
+    @Column(nullable = true,name = "matricule",unique = true)
     private String matricule;
 
 

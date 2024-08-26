@@ -20,7 +20,7 @@
             <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
         </svg> Tableau de bord</a></li>
         <li th:classappend="${currentUrl == '/students' || currentUrl == '/students/add' || currentUrl == '/students/update'} ? 'active'">
-            <a  th:href="@{/students}"><img th:src="@{../icon/student.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
+            <a  th:href="@{/students}"><img th:src="@{../icon/eleve.png}" style="width: 30px;height: 30px" alt=""> Élèves</a></li>
         <li th:classappend="${currentUrl == '/professors' || currentUrl == '/professors/add' || currentUrl == '/professors/update'} ? 'active'">
             <a th:href="@{/professors}"><img th:src="@{../icon/professeur.png}" style="width: 30px;height: 30px" alt=""> Professeurs</a></li>
         <li th:classappend="${currentUrl == '/users' || currentUrl == '/users/add' || currentUrl == '/users/update'} ? 'active'">

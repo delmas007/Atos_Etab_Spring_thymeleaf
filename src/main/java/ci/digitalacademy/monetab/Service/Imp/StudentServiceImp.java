@@ -25,7 +25,8 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public Student update(Student student) {
-        Optional<Student> optionalUser = findOne(student.getId()); // recuperation d'un optionnal user
+//        Optional<Student> optionalUser = findOne(student.getId()); // recuperation d'un optionnal user
+        Optional<Student> optionalUser = null; // recuperation d'un optionnal user
         if (optionalUser.isPresent()){ // verification de l'existance d'un contenu dans le optional
             Student userToUpdate = optionalUser.get(); // declaration + affectation d'un user a partir du optional
             userToUpdate.setMatricule(student.getMatricule());

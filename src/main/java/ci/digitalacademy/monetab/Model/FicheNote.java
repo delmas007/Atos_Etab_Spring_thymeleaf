@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,7 +21,16 @@ public class FicheNote {
 
     private int annee;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "professeur_id")
     private Professor professor;
+
+    @Override
+    public String toString() {
+        return "FicheNote{" +
+                "annee=" + annee +
+                ", note=" + note +
+                ", id=" + id +
+                '}';
+    }
 }

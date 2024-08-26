@@ -12,11 +12,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Professor  {
+public class Professor extends Person {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(nullable = false)
     private boolean vacant;
@@ -30,6 +27,16 @@ public class Professor  {
     @Column(nullable = false,name = "sujetProchaine_reunion")
     private String sujetProchaineReunion;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "professor")
     private Set<FicheNote> ficheNote;
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+                ", matiereEnseigne='" + matiereEnseigne + '\'' +
+                ", prochainCours='" + prochainCours + '\'' +
+                ", sujetProchaineReunion='" + sujetProchaineReunion + '\'' +
+                ", vacant=" + vacant +
+                '}';
+    }
 }

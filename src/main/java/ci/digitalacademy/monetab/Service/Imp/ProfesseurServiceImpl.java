@@ -25,7 +25,8 @@ public class ProfesseurServiceImpl implements ProfessorService {
 
     @Override
     public Professor update(Professor professor) {
-        Optional<Professor> optionalProfessor = findOne(professor.getId()); // recuperation d'un optionnal user
+//        Optional<Professor> optionalProfessor = findOne(professor.getId()); // recuperation d'un optionnal user
+        Optional<Professor> optionalProfessor = null; // recuperation d'un optionnal user
         if (optionalProfessor.isPresent()){ // verification de l'existance d'un contenu dans le optional
             Professor professorToUpdate = optionalProfessor.get(); // declaration + affectation d'un user a partir du optional
             professorToUpdate.setVacant(professor.isVacant());
