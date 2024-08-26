@@ -9,17 +9,17 @@ import java.util.Date;
 @Setter
 //@NoArgsConstructor
 //@AllArgsConstructor
-//@Entity
+@Entity
 //@Builder
-@MappedSuperclass
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@MappedSuperclass
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@DiscriminatorColumn(name = "person_type")
 //@Table(name = "person")
 public abstract class Person {
 
     @Id
 //    @GeneratedValue(strategy = GenerationType.TABLE)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
 
     private Date dateNaissance ;

@@ -42,6 +42,7 @@ public class MonEtabApplication implements CommandLineRunner {
         student.setClasse("Tle D");
         student.setTelephone(12345678);
         student.setVille("Abidjan");
+        student.setMatricule("123456");
         student.setDateNaissance(Date.from(Instant.now()));
 
         Student student2 = new Student();
@@ -49,12 +50,51 @@ public class MonEtabApplication implements CommandLineRunner {
         student2.setPrenom("Jeanx");
         student2.setEmail("jeanx@gmail.com");
         student2.setClasse("Tle Dx");
-        student2.setTelephone(12345678);
-        student2.setVille("Abidjan");
+        student2.setTelephone(1234567855);
+        student2.setVille("Bouake");
+        student2.setMatricule("123456x");
         student2.setDateNaissance(Date.from(Instant.now()));
        studentService.save(student);
          studentService.save(student2);
 //        studentRepository.saveAll(List.of(student, student2));
+
+        Professor professor = new Professor();
+        professor.setNom("Kouamé");
+        professor.setPrenom("franck");
+        professor.setEmail("ddd@gmail.com");
+        professor.setMatiereEnseigne("algebre");
+        professor.setProchainCours("python");
+        professor.setSujetProchaineReunion("java");
+        professor.setVacant(true);
+        professor.setDateNaissance(Date.from(Instant.now()));
+        professor.setVille("Abidjan");
+        professor.setTelephone(12345678);
+        professorService.save(professor);
+
+        Professor professor2 = new Professor();
+        professor2.setNom("Kouassi");
+        professor2.setPrenom("Jean");
+        professor2.setEmail("sdfcsdc@gmail.com");
+        professor2.setMatiereEnseigne("SVT");
+        professor2.setProchainCours("Mathematique");
+        professor2.setSujetProchaineReunion("physique");
+        professor2.setVacant(true);
+        professor2.setDateNaissance(Date.from(Instant.now()));
+        professor2.setVille("Daloa");
+        professor2.setTelephone(65565465);
+        professorService.save(professor2);
+
+        User user = new User();
+        user.setPseudo("admin");
+        user.setPassword("admin");
+        user.setCreationDate(Instant.now());
+        userService.save(user);
+
+        User user2 = new User();
+        user2.setPseudo("user");
+        user2.setPassword("user");
+        user2.setCreationDate(Instant.now());
+        userService.save(user2);
 
     }
 }

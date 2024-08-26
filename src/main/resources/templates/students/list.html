@@ -22,41 +22,25 @@
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Genre</th>
                     <th>Classe</th>
                     <th>Matricule</th>
-                    <th>Age</th>
                     <th>Téléphone</th>
                     <th>Ville</th>
+                    <th>Date de naissance</th>
+                    <th>Email</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="student:${students}">
-                    <td th:text="${student.getNom()}"></td>
+                    <td th:text="${student.nom}"></td>
                     <td th:text="${student.prenom}"></td>
-                    <td>M</td>
-                    <td>Tle</td>
-                    <td>GDJ7GDGD</td>
-                    <td>25</td>
-                    <td>0123456789</td>
-                    <td>Bonoua</td>
-                    <td>
-                        <a th:href="@{/students/update}">
-                            <button class="edit-btn">Modifier</button>
-                        </a>
-                        <button class="delete-btn">Supprimer</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>KONÉ</td>
-                    <td>Sali</td>
-                    <td>F</td>
-                    <td>2nd</td>
-                    <td>GDJ7GDGD</td>
-                    <td>22</td>
-                    <td>0123456789</td>
-                    <td>Abidjan</td>
+                    <td th:text="${student.classe}"></td>
+                    <td th:text="${student.getMatricule()}"></td>
+                    <td th:text="${student.telephone}"></td>
+                    <td th:text="${student.ville}"></td>
+                    <td th:text="${#dates.format(student.dateNaissance, 'dd MMMM yyyy')}"></td>
+                    <td th:text="${student.getEmail()}"></td>
                     <td>
                         <a th:href="@{/students/update}">
                             <button class="edit-btn">Modifier</button>

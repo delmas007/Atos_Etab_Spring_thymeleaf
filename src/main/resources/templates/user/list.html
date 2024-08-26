@@ -13,7 +13,7 @@
 <div class="main-content">
     <main>
         <header class="header">
-            <h1>Professor (2)</h1>
+            <h1>User (<span th:text="${users.size()}"></span>)</h1>
             <a th:href="@{/users/add}"> <img th:src="@{../icon/plus.png}" style="width: 10px;height: 10px" alt=""> Nouveau profeseur</a>
         </header>
         <section class="table-section">
@@ -26,19 +26,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>admin</td>
-                    <td>16/03/2024</td>
-                    <td>
-                        <a th:href="@{/users/update}">
-                            <button class="edit-btn">Modifier</button>
-                        </a>
-                        <button class="delete-btn">Supprimer</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>user2</td>
-                    <td>13/03/2024</td>
+                <tr th:each="user:${users}">
+                    <td th:text="${user.pseudo}"></td>
+                    <td th:text="${#dates.format(user.creationDate, 'dd MMMM yyyy')}"></td>
                     <td>
                         <a th:href="@{/users/update}">
                             <button class="edit-btn">Modifier</button>

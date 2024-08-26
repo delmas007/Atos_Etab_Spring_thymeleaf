@@ -13,7 +13,7 @@
 <div class="main-content">
     <main>
         <header class="header">
-            <h1>Professor (2)</h1>
+            <h1>Professor (<span th:text="${professors.size()}"></span>)</h1>
             <a th:href="@{/professors/add}"> <img th:src="@{../icon/plus.png}" style="width: 10px;height: 10px" alt=""> Nouveau profeseur</a>
         </header>
         <section class="table-section">
@@ -22,40 +22,31 @@
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Matiere</th>
-                    <th>Vacant</th>
-                    <th>Age</th>
+                    <th>Matiere enseigne</th>
+                    <th>prochain cours</th>
+                    <th>Sujet prochaine reunion</th>
                     <th>Téléphone</th>
                     <th>Ville</th>
+                    <th>Date de naissance</th>
+                    <th>Email</th>
+                    <th>Vacant</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>KOUAKOU</td>
-                    <td>George</td>
-                    <td>Math</td>
-                    <td>Non</td>
-                    <td>40</td>
-                    <td>0123456789</td>
-                    <td>Touba</td>
+                <tr th:each="professor:${professors}">
+                    <td th:text="${professor.nom}"></td>
+                    <td th:text="${professor.prenom}"></td>
+                    <td th:text="${professor.matiereEnseigne}"></td>
+                    <td th:text="${professor.prochainCours}"></td>
+                    <td th:text="${professor.sujetProchaineReunion}"></td>
+                    <td th:text="${professor.telephone}"></td>
+                    <td th:text="${professor.ville}"></td>
+                    <td th:text="${#dates.format(professor.dateNaissance, 'dd MMMM yyyy')}"></td>
+                    <td th:text="${professor.email}"></td>
+                    <td th:text="${professor.vacant}"></td>
                     <td>
-                        <a th:href="@{/professors/update}">
-                            <button class="edit-btn">Modifier</button>
-                        </a>
-                        <button class="delete-btn">Supprimer</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>ATTA</td>
-                    <td>Flora</td>
-                    <td>Fhysique</td>
-                    <td>OUI</td>
-                    <td>37</td>
-                    <td>0123456789</td>
-                    <td>Bouake</td>
-                    <td>
-                        <a th:href="@{/professors/update}">
+                        <a th:href="@{/students/update}">
                             <button class="edit-btn">Modifier</button>
                         </a>
                         <button class="delete-btn">Supprimer</button>
