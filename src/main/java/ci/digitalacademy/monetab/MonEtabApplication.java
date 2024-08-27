@@ -41,7 +41,6 @@ public class MonEtabApplication implements CommandLineRunner {
         student.setEmail("jean@gmail.com");
         student.setClasse("Tle D");
         student.setTelephone(12345678);
-        student.setVille("Abidjan");
         student.setMatricule("123456");
         student.setDateNaissance(Date.from(Instant.now()));
 
@@ -51,7 +50,6 @@ public class MonEtabApplication implements CommandLineRunner {
         student2.setEmail("jeanx@gmail.com");
         student2.setClasse("Tle Dx");
         student2.setTelephone(1234567855);
-        student2.setVille("Bouake");
         student2.setMatricule("123456x");
         student2.setDateNaissance(Date.from(Instant.now()));
        studentService.save(student);
@@ -63,11 +61,8 @@ public class MonEtabApplication implements CommandLineRunner {
         professor.setPrenom("franck");
         professor.setEmail("ddd@gmail.com");
         professor.setMatiereEnseigne("algebre");
-        professor.setProchainCours("python");
-        professor.setSujetProchaineReunion("java");
         professor.setVacant(true);
         professor.setDateNaissance(Date.from(Instant.now()));
-        professor.setVille("Abidjan");
         professor.setTelephone(12345678);
         professorService.save(professor);
 
@@ -76,11 +71,8 @@ public class MonEtabApplication implements CommandLineRunner {
         professor2.setPrenom("Jean");
         professor2.setEmail("sdfcsdc@gmail.com");
         professor2.setMatiereEnseigne("SVT");
-        professor2.setProchainCours("Mathematique");
-        professor2.setSujetProchaineReunion("physique");
         professor2.setVacant(true);
         professor2.setDateNaissance(Date.from(Instant.now()));
-        professor2.setVille("Daloa");
         professor2.setTelephone(65565465);
         professorService.save(professor2);
 

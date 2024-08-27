@@ -25,7 +25,6 @@
                     <th>Classe</th>
                     <th>Matricule</th>
                     <th>Téléphone</th>
-                    <th>Ville</th>
                     <th>Date de naissance</th>
                     <th>Email</th>
                     <th>Actions</th>
@@ -38,14 +37,15 @@
                     <td th:text="${student.classe}"></td>
                     <td th:text="${student.getMatricule()}"></td>
                     <td th:text="${student.telephone}"></td>
-                    <td th:text="${student.ville}"></td>
                     <td th:text="${#dates.format(student.dateNaissance, 'dd MMMM yyyy')}"></td>
                     <td th:text="${student.getEmail()}"></td>
                     <td>
-                        <a th:href="@{/students/update}">
+                        <a th:href="@{/students/{id}(id=${student.id})}">
                             <button class="edit-btn">Modifier</button>
                         </a>
-                        <button class="delete-btn">Supprimer</button>
+                        <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="delete-btn">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>

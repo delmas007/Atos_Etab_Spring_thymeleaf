@@ -23,10 +23,7 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Matiere enseigne</th>
-                    <th>prochain cours</th>
-                    <th>Sujet prochaine reunion</th>
                     <th>Téléphone</th>
-                    <th>Ville</th>
                     <th>Date de naissance</th>
                     <th>Email</th>
                     <th>Vacant</th>
@@ -38,19 +35,20 @@
                     <td th:text="${professor.nom}"></td>
                     <td th:text="${professor.prenom}"></td>
                     <td th:text="${professor.matiereEnseigne}"></td>
-                    <td th:text="${professor.prochainCours}"></td>
-                    <td th:text="${professor.sujetProchaineReunion}"></td>
                     <td th:text="${professor.telephone}"></td>
-                    <td th:text="${professor.ville}"></td>
                     <td th:text="${#dates.format(professor.dateNaissance, 'dd MMMM yyyy')}"></td>
                     <td th:text="${professor.email}"></td>
                     <td th:text="${professor.vacant}"></td>
                     <td>
-                        <a th:href="@{/students/update}">
+                        <a th:href="@{/professors/{id}(id=${professor.id})}">
                             <button class="edit-btn">Modifier</button>
                         </a>
-                        <button class="delete-btn">Supprimer</button>
+                        <form th:action="@{/professors/delete/{id}(id=${professor.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="delete-btn">Supprimer</button>
+                        </form>
                     </td>
+
+
                 </tr>
                 </tbody>
             </table>
@@ -58,7 +56,6 @@
     </main>
 
 </div>
-<!-- Modal de confirmation -->
 <div id="confirmationModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -74,6 +71,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <th:block th:insert="~{fragments/fragment :: script-modal}"></th:block>
 </body>

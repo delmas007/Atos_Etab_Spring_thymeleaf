@@ -1,5 +1,6 @@
 package ci.digitalacademy.monetab.Controller;
 
+import ci.digitalacademy.monetab.Model.Professor;
 import ci.digitalacademy.monetab.Model.Student;
 import ci.digitalacademy.monetab.Service.StudentService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,9 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("students")
@@ -22,6 +26,7 @@ public class StudentsController {
     public String showAddStudentPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
+        model.addAttribute("student", new Student());
         return "students/forms";
     }
 
@@ -40,4 +45,30 @@ public class StudentsController {
         model.addAttribute("currentUrl", currentUrl);
         return "students/list";
     }
+
+    @PostMapping
+    public String saveStudent(Student student){
+        studentService.save(student);
+        return "redirect:/students";
+    }
+
+    @GetMapping("/{id}")
+    public String showUpdateProfessorForm(HttpServletRequest request, Model model, @PathVariable Long id){
+        String currentUrl = request.getRequestURI();
+        Optional<Student> student = studentService.findOne(id);
+        model.addAttribute("currentUrl", currentUrl);
+        if(student.isPresent()){
+            model.addAttribute("student", student.get());
+            return "students/forms";
+        }else {
+            return "redirect:/students";
+        }
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable Long id){
+        studentService.delete(id);
+        return "redirect:/students";
+    }
+
 }

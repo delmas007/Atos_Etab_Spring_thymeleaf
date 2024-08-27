@@ -2,6 +2,7 @@ package ci.digitalacademy.monetab.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -22,9 +23,8 @@ public abstract class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance ;
-
-    private String ville ;
     @Column(nullable = false,name = "first_name")
     private String nom ;
     @Column(nullable = false,name = "last_name")

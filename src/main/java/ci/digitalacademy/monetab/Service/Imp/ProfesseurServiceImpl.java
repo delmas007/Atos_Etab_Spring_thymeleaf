@@ -31,8 +31,6 @@ public class ProfesseurServiceImpl implements ProfessorService {
             Professor professorToUpdate = optionalProfessor.get(); // declaration + affectation d'un user a partir du optional
             professorToUpdate.setVacant(professor.isVacant());
             professorToUpdate.setMatiereEnseigne(professor.getMatiereEnseigne());
-            professorToUpdate.setProchainCours(professor.getProchainCours());
-            professorToUpdate.setSujetProchaineReunion(professor.getSujetProchaineReunion());
             return save(professorToUpdate); //enregistrement de l'utilisateur modifier
         }else {
             throw new IllegalArgumentException(); // lever une exception en cas d'inexistance de l'utilisateur lever une erreur

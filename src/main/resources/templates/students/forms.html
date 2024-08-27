@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <title>Student</title>
-<link rel="stylesheet" href="../css/student/ajouter.css">
+<link rel="stylesheet" href="../css/eleve/ajouter.css">
 <head th:insert="~{fragments/fragment :: head}">
 </head>
 <body>
@@ -16,25 +16,18 @@
             <a th:href="@{/students}" class="retour">← Retour</a>
         </div>
 
-        <h2>Ajouter un élève</h2>
-        <form id="addStudentForm">
+        <h2 th:text="${student.id == null}?'Ajouter eleve':'Modifier eleve'"></h2>
+        <form id="addStudentForm" th:object="${student}" th:action="@{/students}" method="post">
+            <input type="text" th:field="*{id}" hidden>
             <div class="form-row">
-                <input type="text" id="nom" placeholder="Nom" required>
-                <input type="text" id="prenom" placeholder="Prénom" required>
+                <input type="text" th:field="*{nom}" id="nom" placeholder="Nom" required>
+                <input type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom" required>
             </div>
             <div class="form-row">
-                <div class="radio-group">
-                    <label><input type="radio" name="genre" value="homme" required> Homme</label>
-                    <label><input type="radio" name="genre" value="femme" required> Femme</label>
-                </div>
+                <input type="text" th:field="*{matricule}" id="matricule" placeholder="matricule" required>
             </div>
             <div class="form-row">
-                <input type="text" id="matricule" placeholder="Matricule" required>
-                <input type="date" id="dateNaissance" required>
-            </div>
-            <div class="form-row">
-                <select id="classe" required>
-                    <option value="">Sélectionner une classe</option>
+                <select id="classe" required th:field="*{classe}">
                     <option value="1ere">1ère</option>
                     <option value="2eme">2ème</option>
                     <option value="3eme">3ème</option>
@@ -42,10 +35,12 @@
                     <option value="5eme">5ème</option>
                     <option value="6eme">6ème</option>
                 </select>
+                <input type="date" id="dateNaissance" required th:field="*{dateNaissance}">
             </div>
+
             <div class="form-row">
-                <input type="tel" id="telephone" placeholder="Téléphone">
-                <input type="text" id="ville" placeholder="Ville">
+                <input type="number" id="telephone" placeholder="Téléphone" th:field="*{telephone}">
+                <input type="email" id="email" th:field="*{email}" placeholder="email">
             </div>
             <div class="form-row buttons">
                 <button type="button" class="btn-cancel">Annuler</button>

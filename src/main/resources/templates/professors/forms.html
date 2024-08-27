@@ -15,24 +15,24 @@
         <div class="retour-container">
             <a th:href="@{/professors}" class="retour">← Retour</a>
         </div>
-        <h2>Ajouter un Professor</h2>
-        <form id="addStudentForm">
+        <h2 th:text="${professor.id == null}?'Ajouter professeur':'Modifier Professeur'"></h2>
+        <form id="addStudentForm" th:object="${professor}" th:action="@{/professors}" method="post">
+            <input type="text" th:field="*{id}" hidden>
             <div class="form-row">
-                <input type="text" id="nom" placeholder="Nom" required>
-                <input type="text" id="prenom" placeholder="Prénom" required>
+                <input type="text" th:field="*{nom}" id="nom" placeholder="Nom" required>
+                <input type="text" th:field="*{prenom}" id="prenom" placeholder="Prénom" required>
             </div>
             <div class="form-row">
                 <div>
                     <label >Vacant :</label>
                 </div>
-                <div class="radio-group">
-                    <label><input type="radio" name="vacant" value="oui"  required> oui</label>
-                    <label><input type="radio" name="vacant" value="non" required> non</label>
+                <div class="radio-group" >
+                    <label><input type="radio" th:field="*{vacant}" name="vacant" value="true"  required> oui</label>
+                    <label><input type="radio" th:field="*{vacant}" name="vacant" value="false" required> non</label>
                 </div>
             </div>
             <div class="form-row">
-                    <select id="classe" required>
-                        <option value="">Sélectionner une matiere</option>
+                    <select id="classe" required th:field="*{matiereEnseigne}">
                         <option value="Math">Math</option>
                         <option value="Physique">Physique</option>
                         <option value="EPS">EPS</option>
@@ -41,12 +41,12 @@
                         <option value="Philosophie">Philosophie</option>
                         <option value="Français">Français</option>
                     </select>
-                <input type="date" id="dateNaissance" required>
+                <input type="date" id="dateNaissance" required th:field="*{dateNaissance}">
             </div>
 
             <div class="form-row">
-                <input type="tel" id="telephone" placeholder="Téléphone">
-                <input type="text" id="ville" placeholder="Ville">
+                <input type="number" id="telephone" placeholder="Téléphone" th:field="*{telephone}">
+                <input type="email" id="email" th:field="*{email}" placeholder="email">
             </div>
             <div class="form-row buttons">
                 <button type="button" class="btn-cancel">Annuler</button>

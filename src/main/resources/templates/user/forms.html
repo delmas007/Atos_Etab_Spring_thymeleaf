@@ -15,12 +15,13 @@
             <a th:href="@{/users}" class="retour">← Retour</a>
         </div>
         <h2>Ajouter un utilisateur</h2>
-        <form id="addStudentForm">
+        <form id="addStudentForm" th:object="${user}" th:action="@{/users}" method="post">
+            <input type="text" th:field="*{id}" hidden>
             <div class="form-row">
-                <input type="text" id="pseudo" placeholder="Pseudo" required>
+                <input type="text" th:field="*{pseudo}" id="pseudo" placeholder="Pseudo" required>
             </div>
             <div class="form-row">
-                <input type="password" id="mot de passe" placeholder="Mot de passe" required>
+                <input type="password" th:field="*{password}" id="mot de passe" placeholder="Mot de passe" required>
             </div>
             <div class="form-row">
                 <input type="password" id="confirmer mot de passe" placeholder="Confirmer mot de passe" required>

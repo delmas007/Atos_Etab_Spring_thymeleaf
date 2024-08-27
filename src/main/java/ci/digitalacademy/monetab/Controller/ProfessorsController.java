@@ -7,9 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("professors")
@@ -22,6 +25,7 @@ public class ProfessorsController {
     public String showAddProfessorPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
+        model.addAttribute("professor", new Professor());
         return "professors/forms";
     }
 
@@ -40,4 +44,30 @@ public class ProfessorsController {
         model.addAttribute("currentUrl", currentUrl);
         return "professors/list";
     }
+
+    @PostMapping
+    public String saveProfessor(Professor professor){
+        professorService.save(professor);
+        return "redirect:/professors";
+    }
+
+    @GetMapping("/{id}")
+    public String showUpdateProfessorForm(HttpServletRequest request, Model model, @PathVariable Long id){
+        String currentUrl = request.getRequestURI();
+        Optional<Professor> professor = professorService.findOne(id);
+        model.addAttribute("currentUrl", currentUrl);
+        if(professor.isPresent()){
+            model.addAttribute("professor", professor.get());
+            return "professors/forms";
+        }else {
+            return "redirect:/professors";
+        }
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProfessor(@PathVariable Long id){
+        professorService.delete(id);
+        return "redirect:/professors";
+    }
+
 }
