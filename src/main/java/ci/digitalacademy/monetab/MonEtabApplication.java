@@ -3,6 +3,9 @@ package ci.digitalacademy.monetab;
 import ci.digitalacademy.monetab.Model.*;
 import ci.digitalacademy.monetab.Repository.*;
 import ci.digitalacademy.monetab.Service.*;
+import ci.digitalacademy.monetab.Service.dto.ProfessorDTO;
+import ci.digitalacademy.monetab.Service.dto.StudentDTO;
+import ci.digitalacademy.monetab.Service.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -35,7 +38,7 @@ public class MonEtabApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Student student = new Student();
+        StudentDTO student = new StudentDTO();
         student.setNom("Kouassi");
         student.setPrenom("Jean");
         student.setEmail("jean@gmail.com");
@@ -44,7 +47,7 @@ public class MonEtabApplication implements CommandLineRunner {
         student.setMatricule("123456");
         student.setDateNaissance(Date.from(Instant.now()));
 
-        Student student2 = new Student();
+        StudentDTO student2 = new StudentDTO();
         student2.setNom("Kouassix");
         student2.setPrenom("Jeanx");
         student2.setEmail("jeanx@gmail.com");
@@ -56,7 +59,7 @@ public class MonEtabApplication implements CommandLineRunner {
          studentService.save(student2);
 //        studentRepository.saveAll(List.of(student, student2));
 
-        Professor professor = new Professor();
+        ProfessorDTO professor = new ProfessorDTO();
         professor.setNom("Kouamé");
         professor.setPrenom("franck");
         professor.setEmail("ddd@gmail.com");
@@ -66,7 +69,7 @@ public class MonEtabApplication implements CommandLineRunner {
         professor.setTelephone(12345678);
         professorService.save(professor);
 
-        Professor professor2 = new Professor();
+        ProfessorDTO professor2 = new ProfessorDTO();
         professor2.setNom("Kouassi");
         professor2.setPrenom("Jean");
         professor2.setEmail("sdfcsdc@gmail.com");
@@ -76,16 +79,18 @@ public class MonEtabApplication implements CommandLineRunner {
         professor2.setTelephone(65565465);
         professorService.save(professor2);
 
-        User user = new User();
-        user.setPseudo("admin");
-        user.setPassword("admin");
-        user.setCreationDate(Instant.now());
+        UserDTO user = UserDTO.builder()
+                .pseudo("admin")
+                .password("admin")
+                .creationDate(Instant.now())
+                .build();
         userService.save(user);
 
-        User user2 = new User();
-        user2.setPseudo("user");
-        user2.setPassword("user");
-        user2.setCreationDate(Instant.now());
+        UserDTO user2 = UserDTO.builder()
+                .pseudo("user")
+                .password("user")
+                .creationDate(Instant.now())
+                .build();
         userService.save(user2);
 
     }

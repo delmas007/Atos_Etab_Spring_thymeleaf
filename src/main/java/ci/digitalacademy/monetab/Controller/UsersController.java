@@ -3,6 +3,7 @@ package ci.digitalacademy.monetab.Controller;
 import ci.digitalacademy.monetab.Model.Professor;
 import ci.digitalacademy.monetab.Model.User;
 import ci.digitalacademy.monetab.Service.UserService;
+import ci.digitalacademy.monetab.Service.dto.UserDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,7 @@ public class UsersController {
 
     @GetMapping
     public String showUserPage(HttpServletRequest request, Model model){
-        List<User> users = userService.findAll();
+        List<UserDTO> users = userService.findAll();
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
         model.addAttribute("users", users);
@@ -48,7 +49,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public String saveUser(User user){
+    public String saveUser(UserDTO user){
         user.setCreationDate(Instant.now());
         userService.save(user);
         return "redirect:/users";
@@ -57,7 +58,7 @@ public class UsersController {
     @GetMapping("/{id}")
     public String showUpdateUserForm(HttpServletRequest request, Model model, @PathVariable Long id){
         String currentUrl = request.getRequestURI();
-        Optional<User> user = userService.findOne(id);
+        Optional<UserDTO> user = userService.findOne(id);
         model.addAttribute("currentUrl", currentUrl);
         if(user.isPresent()){
             model.addAttribute("user", user.get());

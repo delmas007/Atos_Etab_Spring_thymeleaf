@@ -3,6 +3,7 @@ package ci.digitalacademy.monetab.Controller;
 import ci.digitalacademy.monetab.Model.Professor;
 import ci.digitalacademy.monetab.Model.Student;
 import ci.digitalacademy.monetab.Service.StudentService;
+import ci.digitalacademy.monetab.Service.dto.StudentDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -40,14 +41,14 @@ public class StudentsController {
     @GetMapping
     public String showtudentPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
-        List<Student> students = studentService.getAll();
+        List<StudentDTO> students = studentService.getAll();
         model.addAttribute("students", students);
         model.addAttribute("currentUrl", currentUrl);
         return "students/list";
     }
 
     @PostMapping
-    public String saveStudent(Student student){
+    public String saveStudent(StudentDTO student){
         studentService.save(student);
         return "redirect:/students";
     }
@@ -55,7 +56,7 @@ public class StudentsController {
     @GetMapping("/{id}")
     public String showUpdateProfessorForm(HttpServletRequest request, Model model, @PathVariable Long id){
         String currentUrl = request.getRequestURI();
-        Optional<Student> student = studentService.findOne(id);
+        Optional<StudentDTO> student = studentService.findOne(id);
         model.addAttribute("currentUrl", currentUrl);
         if(student.isPresent()){
             model.addAttribute("student", student.get());

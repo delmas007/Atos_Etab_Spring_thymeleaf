@@ -4,7 +4,11 @@ package ci.digitalacademy.monetab.Service.Imp;
 import ci.digitalacademy.monetab.Model.Professor;
 import ci.digitalacademy.monetab.Model.User;
 import ci.digitalacademy.monetab.Repository.ProfessorRepository;
+import ci.digitalacademy.monetab.Service.Mapper.AdressMapper;
+import ci.digitalacademy.monetab.Service.Mapper.ProfessorMapper;
+import ci.digitalacademy.monetab.Service.Mapper.StudentMapper;
 import ci.digitalacademy.monetab.Service.ProfessorService;
+import ci.digitalacademy.monetab.Service.dto.ProfessorDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,22 +23,17 @@ public class ProfesseurServiceImpl implements ProfessorService {
 
 
     @Override
-    public Professor save(Professor professor) {
-        return professorRepository.save(professor);
+    public ProfessorDTO save(ProfessorDTO professor) {
+        return ProfessorMapper.fromEntity(professorRepository.save(ProfessorMapper.toEntity(professor)));
     }
 
     @Override
-    public Professor update(Professor professor) {
-//        Optional<Professor> optionalProfessor = findOne(professor.getId()); // recuperation d'un optionnal user
-        Optional<Professor> optionalProfessor = null; // recuperation d'un optionnal user
-        if (optionalProfessor.isPresent()){ // verification de l'existance d'un contenu dans le optional
-            Professor professorToUpdate = optionalProfessor.get(); // declaration + affectation d'un user a partir du optional
-            professorToUpdate.setVacant(professor.isVacant());
-            professorToUpdate.setMatiereEnseigne(professor.getMatiereEnseigne());
-            return save(professorToUpdate); //enregistrement de l'utilisateur modifier
-        }else {
-            throw new IllegalArgumentException(); // lever une exception en cas d'inexistance de l'utilisateur lever une erreur
-        }
+    public ProfessorDTO update(ProfessorDTO professor) {
+        return findOne(professor.getId()).map(existingAddress -> {
+            existingAddress.setNom(professor.getNom());
+            existingAddress.setPrenom(professor.getPrenom());
+            return save(existingAddress);
+        }).orElseThrow(() -> new RuntimeException("Professor not found"));
     }
 
     @Override
@@ -43,13 +42,17 @@ public class ProfesseurServiceImpl implements ProfessorService {
     }
 
     @Override
-    public List<Professor> getAll() {
-        return professorRepository.findAll();
+    public List<ProfessorDTO> getAll() {
+        return professorRepository.findAll().stream().map(address -> {
+            return ProfessorMapper.fromEntity(address);
+        }).toList();
     }
 
     @Override
-    public Optional<Professor> findOne(Long id) {
-        return professorRepository.findById(id);
+    public Optional<ProfessorDTO> findOne(Long id) {
+        return professorRepository.findById(id).map(address -> {
+            return ProfessorMapper.fromEntity(address);
+        });
     }
 
 

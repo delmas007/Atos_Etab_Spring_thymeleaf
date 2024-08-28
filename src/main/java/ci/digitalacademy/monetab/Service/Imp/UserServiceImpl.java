@@ -3,7 +3,10 @@ package ci.digitalacademy.monetab.Service.Imp;
 
 import ci.digitalacademy.monetab.Model.User;
 import ci.digitalacademy.monetab.Repository.UserRepository;
+import ci.digitalacademy.monetab.Service.Mapper.ProfessorMapper;
+import ci.digitalacademy.monetab.Service.Mapper.UserMapper;
 import ci.digitalacademy.monetab.Service.UserService;
+import ci.digitalacademy.monetab.Service.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,13 +26,13 @@ public class UserServiceImpl implements UserService {
 //    private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Override
-    public User save(User user) {
+    public UserDTO save(UserDTO user) {
         log.debug("request for save user {}", user);
-        return userRepository.save(user);
+        return UserMapper.fromEntity(userRepository.save(UserMapper.toEntity(user)));
     }
 
     @Override
-    public User update(User user) {
+    public UserDTO update(UserDTO user) {
         log.debug("request for update user {}", user);
 //        return findOne(user.getId()).map(existingUser -> { // fonction lambda qui permet de modifier l'utilisateur
 //            existingUser.setPassword(user.getPassword());
@@ -38,21 +41,18 @@ public class UserServiceImpl implements UserService {
 //        }).map(existingUser ->{ // foncction lambda qui permet de sauvegarder l'utilisateur modifier
 //            return save(existingUser);
 //        }).orElseThrow(()-> new IllegalArgumentException()); // lever une exception en cas d'inexistance de l'utilisateur lever une erreur
-        Optional<User> optionalUser = findOne(user.getId()); // recuperation d'un optionnal user
-        if (optionalUser.isPresent()){ // verification de l'existance d'un contenu dans le optional
-            User userToUpdate = optionalUser.get(); // declaration + affectation d'un user a partir du optional
-            userToUpdate.setPassword(user.getPassword());
-            userToUpdate.setPseudo(user.getPseudo());
-            return save(userToUpdate); //enregistrement de l'utilisateur modifier
-        }else {
-            throw new IllegalArgumentException(); // lever une exception en cas d'inexistance de l'utilisateur lever une erreur
-        }
+        return findOne(user.getId()).map(existingAddress -> {
+            existingAddress.setPseudo(user.getPseudo());
+            existingAddress.setPassword(user.getPassword());
+            return save(existingAddress);
+        }).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     @Override
-    public Optional<User> findOne(Long id) {
-        log.debug("request for find user by id {}", id);
-        return userRepository.findById(id);
+    public Optional<UserDTO> findOne(Long id) {
+        return userRepository.findById(id).map(address -> {
+            return UserMapper.fromEntity(address);
+        });
     }
 
     @Override
@@ -62,8 +62,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
-        log.debug("request for find all user");
-        return userRepository.findAll();
+    public List<UserDTO> findAll() {
+        return userRepository.findAll().stream().map(address -> {
+            return UserMapper.fromEntity(address);
+        }).toList();
     }
 }

@@ -4,7 +4,10 @@ package ci.digitalacademy.monetab.Service.Imp;
 import ci.digitalacademy.monetab.Model.Student;
 import ci.digitalacademy.monetab.Model.User;
 import ci.digitalacademy.monetab.Repository.StudentRepository;
+import ci.digitalacademy.monetab.Service.Mapper.AdressMapper;
+import ci.digitalacademy.monetab.Service.Mapper.StudentMapper;
 import ci.digitalacademy.monetab.Service.StudentService;
+import ci.digitalacademy.monetab.Service.dto.StudentDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,22 +22,17 @@ public class StudentServiceImp implements StudentService {
     private final StudentRepository studentRepository;
 
     @Override
-    public Student save(Student student) {
-        return studentRepository.save(student);
+    public StudentDTO save(StudentDTO studentDTO) {
+    return StudentMapper.fromEntity(studentRepository.save(StudentMapper.toEntity(studentDTO)));
     }
 
     @Override
-    public Student update(Student student) {
-//        Optional<Student> optionalUser = findOne(student.getId()); // recuperation d'un optionnal user
-        Optional<Student> optionalUser = null; // recuperation d'un optionnal user
-        if (optionalUser.isPresent()){ // verification de l'existance d'un contenu dans le optional
-            Student userToUpdate = optionalUser.get(); // declaration + affectation d'un user a partir du optional
-            userToUpdate.setMatricule(student.getMatricule());
-            userToUpdate.setClasse(student.getClasse());
-            return save(userToUpdate); //enregistrement de l'utilisateur modifier
-        }else {
-            throw new IllegalArgumentException(); // lever une exception en cas d'inexistance de l'utilisateur lever une erreur
-        }
+    public StudentDTO update(StudentDTO student) {
+        return findOne(student.getId()).map(existingAddress -> {
+            existingAddress.setNom(student.getNom());
+            existingAddress.setPrenom(student.getPrenom());
+            return save(existingAddress);
+        }).orElseThrow(() -> new RuntimeException("Nom not found"));
     }
 
     @Override
@@ -43,12 +41,16 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public List<Student> getAll() {
-        return studentRepository.findAll();
+    public List<StudentDTO> getAll() {
+        return studentRepository.findAll().stream().map(address -> {
+            return StudentMapper.fromEntity(address);
+        }).toList();
     }
 
     @Override
-    public Optional<Student> findOne(Long id) {
-        return studentRepository.findById(id);
+    public Optional<StudentDTO> findOne(Long id) {
+        return studentRepository.findById(id).map(address -> {
+            return StudentMapper.fromEntity(address);
+        });
     }
 }
