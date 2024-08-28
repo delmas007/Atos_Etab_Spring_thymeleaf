@@ -27,6 +27,7 @@ public class UsersController {
     public String showAddUserPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
+        model.addAttribute("user", new User());
         return "user/forms";
     }
 
@@ -39,9 +40,10 @@ public class UsersController {
 
     @GetMapping
     public String showUserPage(HttpServletRequest request, Model model){
+        List<User> users = userService.findAll();
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
-        model.addAttribute("user", new User());
+        model.addAttribute("users", users);
         return "user/list";
     }
 

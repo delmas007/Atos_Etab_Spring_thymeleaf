@@ -30,10 +30,12 @@
                     <td th:text="${user.pseudo}"></td>
                     <td th:text="${#dates.format(user.creationDate, 'dd MMMM yyyy')}"></td>
                     <td>
-                        <a th:href="@{/users/update}">
+                        <a th:href="@{/users/{id}(id=${user.id})}">
                             <button class="edit-btn">Modifier</button>
                         </a>
-                        <button class="delete-btn">Supprimer</button>
+                        <form th:action="@{/students/delete/{id}(id=${user.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="delete-btn">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>
