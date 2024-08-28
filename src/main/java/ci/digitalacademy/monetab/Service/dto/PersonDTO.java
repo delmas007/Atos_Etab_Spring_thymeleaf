@@ -8,8 +8,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public  class PersonDTO {
     private Long id ;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

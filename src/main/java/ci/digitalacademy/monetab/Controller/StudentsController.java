@@ -27,7 +27,7 @@ public class StudentsController {
     public String showAddStudentPage(HttpServletRequest request, Model model){
         String currentUrl = request.getRequestURI();
         model.addAttribute("currentUrl", currentUrl);
-        model.addAttribute("student", new Student());
+        model.addAttribute("student", new StudentDTO());
         return "students/forms";
     }
 
