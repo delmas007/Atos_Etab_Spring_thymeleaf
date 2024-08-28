@@ -21,7 +21,7 @@ public abstract class Person {
     @Id
 //    @GeneratedValue(strategy = GenerationType.TABLE)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id ;
+    private Long id ;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance ;
