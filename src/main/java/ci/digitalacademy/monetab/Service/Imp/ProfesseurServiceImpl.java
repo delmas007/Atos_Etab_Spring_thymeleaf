@@ -16,11 +16,12 @@ import java.util.Optional;
 public class ProfesseurServiceImpl implements ProfessorService {
 
    public final ProfessorRepository professorRepository;
+   public final ProfessorMapper professorMapper;
 
 
     @Override
     public ProfessorDTO save(ProfessorDTO professor) {
-        return ProfessorMapper.fromEntity(professorRepository.save(ProfessorMapper.toEntity(professor)));
+        return professorMapper.fromEntity(professorRepository.save(professorMapper.toEntity(professor)));
     }
 
     @Override
@@ -40,14 +41,14 @@ public class ProfesseurServiceImpl implements ProfessorService {
     @Override
     public List<ProfessorDTO> getAll() {
         return professorRepository.findAll().stream().map(address -> {
-            return ProfessorMapper.fromEntity(address);
+            return professorMapper.fromEntity(address);
         }).toList();
     }
 
     @Override
     public Optional<ProfessorDTO> findOne(Long id) {
         return professorRepository.findById(id).map(address -> {
-            return ProfessorMapper.fromEntity(address);
+            return professorMapper.fromEntity(address);
         });
     }
 

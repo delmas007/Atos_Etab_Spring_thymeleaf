@@ -25,6 +25,9 @@
                     <th>Classe</th>
                     <th>Matricule</th>
                     <th>Téléphone</th>
+                    <th>Rue</th>
+                    <th>Pays</th>
+                    <th>Ville</th>
                     <th>Date de naissance</th>
                     <th>Email</th>
                     <th>Actions</th>
@@ -37,6 +40,9 @@
                     <td th:text="${student.classe}"></td>
                     <td th:text="${student.getMatricule()}"></td>
                     <td th:text="${student.telephone}"></td>
+                    <td th:text="${student.address != null ? student.address.street : 'non defini'}"></td>
+                    <td th:text="${student.address != null ? student.address.city : 'non defini'}"></td>
+                    <td th:text="${student.address != null ? student.address.country : 'non defini'}"></td>
                     <td th:text="${#dates.format(student.dateNaissance, 'dd MMMM yyyy')}"></td>
                     <td th:text="${student.getEmail()}"></td>
                     <td>
