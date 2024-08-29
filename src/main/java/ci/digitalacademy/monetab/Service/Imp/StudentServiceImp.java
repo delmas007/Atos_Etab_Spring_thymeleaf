@@ -1,10 +1,7 @@
 package ci.digitalacademy.monetab.Service.Imp;
 
 
-import ci.digitalacademy.monetab.Model.Student;
-import ci.digitalacademy.monetab.Model.User;
 import ci.digitalacademy.monetab.Repository.StudentRepository;
-import ci.digitalacademy.monetab.Service.Mapper.AdressMapper;
 import ci.digitalacademy.monetab.Service.Mapper.StudentMapper;
 import ci.digitalacademy.monetab.Service.StudentService;
 import ci.digitalacademy.monetab.Service.dto.StudentDTO;
@@ -20,10 +17,11 @@ import java.util.Optional;
 public class StudentServiceImp implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper;
 
     @Override
     public StudentDTO save(StudentDTO studentDTO) {
-    return StudentMapper.fromEntity(studentRepository.save(StudentMapper.toEntity(studentDTO)));
+    return studentMapper.fromEntity(studentRepository.save(studentMapper.toEntity(studentDTO)));
     }
 
     @Override
@@ -43,14 +41,14 @@ public class StudentServiceImp implements StudentService {
     @Override
     public List<StudentDTO> getAll() {
         return studentRepository.findAll().stream().map(address -> {
-            return StudentMapper.fromEntity(address);
+            return studentMapper.fromEntity(address);
         }).toList();
     }
 
     @Override
     public Optional<StudentDTO> findOne(Long id) {
         return studentRepository.findById(id).map(address -> {
-            return StudentMapper.fromEntity(address);
+            return studentMapper.fromEntity(address);
         });
     }
 }

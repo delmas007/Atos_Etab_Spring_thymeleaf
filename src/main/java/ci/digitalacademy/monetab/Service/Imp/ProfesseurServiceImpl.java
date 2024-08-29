@@ -1,12 +1,8 @@
 package ci.digitalacademy.monetab.Service.Imp;
 
 
-import ci.digitalacademy.monetab.Model.Professor;
-import ci.digitalacademy.monetab.Model.User;
 import ci.digitalacademy.monetab.Repository.ProfessorRepository;
-import ci.digitalacademy.monetab.Service.Mapper.AdressMapper;
 import ci.digitalacademy.monetab.Service.Mapper.ProfessorMapper;
-import ci.digitalacademy.monetab.Service.Mapper.StudentMapper;
 import ci.digitalacademy.monetab.Service.ProfessorService;
 import ci.digitalacademy.monetab.Service.dto.ProfessorDTO;
 import lombok.RequiredArgsConstructor;

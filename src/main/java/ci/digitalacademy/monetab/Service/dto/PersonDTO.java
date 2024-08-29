@@ -1,5 +1,6 @@
 package ci.digitalacademy.monetab.Service.dto;
 
+import ci.digitalacademy.monetab.Model.Address;
 import jakarta.persistence.Column;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +17,7 @@ public  class PersonDTO {
     private String prenom ;
     private String email ;
     protected int telephone;
+    private Address address;
 
 
 }

@@ -35,4 +35,7 @@ public abstract class Person {
 
     protected int telephone;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
 }
